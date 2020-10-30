@@ -17,5 +17,10 @@ public class Bank {
 
         System.out.println(bankAccount1.getInfo());
         System.out.println(bankAccount2.getInfo());
+
+        bankAccount2.transfer(bankAccount1, 400000);
+
+        System.out.println(bankAccount1.getInfo());
+        System.out.println(bankAccount2.getInfo());
     }
 }
