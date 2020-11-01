@@ -22,6 +22,8 @@ public class LocalVariablesMain {
 
         out.println(t);
 
+        double d = 'w';
+        out.println(d);;
 
 
     }
