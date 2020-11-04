@@ -1,6 +1,7 @@
 package Introcontrol;
 
 public class IntroControl {
+
     private int number;
 
     public IntroControl(int number) {
