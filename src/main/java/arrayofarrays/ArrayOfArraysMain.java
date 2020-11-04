@@ -1,5 +1,8 @@
 package arrayofarrays;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class ArrayOfArraysMain {
 
     public void printArrayOfArrays(int[][] a) {
@@ -54,7 +57,6 @@ public class ArrayOfArraysMain {
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.triangularMatrix(4));
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.multiplicationTable(4));
         arrayOfArraysMain.printArrayOfArrays(arrayOfArraysMain.getValues());
-
 
     }
 }
