@@ -29,6 +29,6 @@ public class Company {
         for (Employee employee : employees) {
             names.add(employee.getName());
         }
-        return names
+        return names;
     }
 }
