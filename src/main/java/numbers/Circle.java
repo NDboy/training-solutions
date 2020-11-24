@@ -1,4 +1,4 @@
-package typeconversion;
+package numbers;
 
 public class Circle {
     private  int diameter;
