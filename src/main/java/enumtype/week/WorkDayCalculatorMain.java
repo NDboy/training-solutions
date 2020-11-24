@@ -1,9 +1,9 @@
 package enumtype.week;
 
+
 public class WorkDayCalculatorMain {
     public static void main(String[] args) {
-        WorkDayCalculator workDayCalculator = new WorkDayCalculator();
-
-        System.out.println(workDayCalculator.dayTypes(Day.TUESDAY, 3));
+        WorkdayCalculator workdayCalculator = new WorkdayCalculator();
+        System.out.println(workdayCalculator.dayTypes(Day.TUESDAY, 12));
     }
 }
