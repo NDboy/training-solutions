@@ -1,4 +1,4 @@
-package stringconcat;
+package stringconcat.employee;
 
 public class Employee {
 
@@ -11,18 +11,30 @@ public class Employee {
             throw new IllegalArgumentException("Name must not be empty.");
         }
         this.name = name;
-        if (isEmpty(name)) {
+        if (isEmpty(job)) {
             throw new IllegalArgumentException("Job must not be empty.");
         }
         this.job = job;
-        if (salary % 1000 != 0) {
-            throw new IllegalArgumentException("Salary must be divisible by 1000.");
+        if (salary % 1000 != 0 || salary <= 0) {
+            throw new IllegalArgumentException("Salary must be positive.");
         }
         this.salary = salary;
     }
 
     public boolean isEmpty(String a) {
-        return a == null || a.equals("");
+        return a == null || "".equals(a);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 
     @Override
