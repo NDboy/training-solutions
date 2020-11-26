@@ -1,0 +1,14 @@
+A képzés elvégzésével ismerni fogod a Java
+ programozási nyelv alapelemeit, biztos elméleti
+  háttérrel fogsz rendelkezni, amit gyakorlatban
+   is használni tudsz. Kisebb programozási
+    feladatokat meg tudsz oldani, és a képzésen
+     szerzett ismeretek birtokában önállóan is
+      tovább tudod képezni magad a neked tetsző
+       irányokba. Megismerkedsz adatbázisokkal,
+        valamint az SQL nyelvvel. Ezeket akár
+         Java programozási nyelvből is tudod majd
+          használni. Tudsz majd unit teszteket írni,
+           és jól karbantartható és olvasható kódot
+            fogsz írni a Clean Code alapelvek alapján.
+

@@ -7,7 +7,7 @@ public class DayOfWeeks {
         this.day = day;
     }
 
-    public String getTypeOfDay(String day) {
+    public String whichDay(String day) {
         switch (day.toLowerCase()) {
             case "hétfő":
                 return "hét eleje";
@@ -23,7 +23,7 @@ public class DayOfWeeks {
     }
 
     public static void main(String[] args) {
-        System.out.println(new DayOfWeeks().getTypeOfDay("vasárnap"));
+        System.out.println(new DayOfWeeks().whichDay("vasárnap"));
     }
 
 }
