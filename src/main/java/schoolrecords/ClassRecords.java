@@ -47,8 +47,14 @@ public class ClassRecords {
     }
 
     public double calculateClassAverage() {
+        if (students.size() == 0) {
+            throw new ArithmeticException("No student in the class, average calculation aborted!");
+        }
         double sum = 0;
         for (Student studentMark: students) {
+            if (studentMark.calculateAverage() == 0) {
+                throw new ArithmeticException("No marks present, average calculation aborted!");
+            }
             sum += studentMark.calculateAverage();
         }
         return  (int) (((double) sum / students.size())*100)/ (double) 100;
@@ -85,12 +91,17 @@ public class ClassRecords {
         if (isEmpty(name)) {
             throw new IllegalArgumentException("Student name must not be empty!");
         }
+        if (students.isEmpty()) {
+            throw new IllegalStateException("No students to search!");
+        }
         Student foundStudent = null;
 
         for (Student student: students){
             if (student.getName().contains(name)) {foundStudent = student;}
         }
-//        if (foundStudent == null) {throw new IllegalStateException("Student by this name cannot be found! " + name);}
+        if (foundStudent == null) {
+            throw new IllegalArgumentException("Student by this name cannot be found! " + name);
+        }
 
         return foundStudent;
     }
@@ -100,7 +111,7 @@ public class ClassRecords {
         for (Student student:students) {
             studentsList.add(student.getName());
         }
-//        return String.format("%s, %s, %s", studentsList.get(0), studentsList.get(1), studentsList.get(2));
+
         return studentsList.toString().substring(1, studentsList.toString().length()-1);
     }
 
@@ -113,6 +124,9 @@ public class ClassRecords {
     }
 
     public Student repetition() {
+        if (students.isEmpty()) {
+            throw new IllegalStateException("No students to select for repetition!");
+        }
         return students.get(rnd.nextInt(students.size()));
     }
 }

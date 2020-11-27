@@ -1,10 +1,10 @@
 package algorithmssum;
 
-public class SalesPerson {
+public class Salesperson {
     private String name;
     private int amount;
 
-    public SalesPerson(String name, int amount) {
+    public Salesperson(String name, int amount) {
         this.name = name;
         this.amount = amount;
     }

@@ -67,12 +67,13 @@ public class Student {
 
     @Override
     public String toString() {
-        return name + " marks: " + getMarks();
+        StringBuilder sb = new StringBuilder();
+        sb.append(name + " marks: ");
+        for (Mark mark: marks) {
+            sb.append(mark.getSubject() + ": ");
+            sb.append(mark.getMarkType().getDescription() + "(" + mark.getMarkType().getValue() + ")");
+        }
+        return sb.toString();
     }
-
-
-
-
-
 
 }

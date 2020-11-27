@@ -109,28 +109,28 @@ public class ClassRecordsTest {
         assertEquals("Student name must not be empty!", ex.getMessage());
     }
 
-//    @Test
-//    public void emptyListShouldThrowException() throws IllegalStateException {
-//        Exception ex = assertThrows(IllegalStateException.class, () -> new ClassRecords("First Grade", new Random()).findStudentByName("Kovács Rita"));
-//        assertEquals("No students to search!", ex.getMessage());
-//    }
+    @Test
+    public void emptyListShouldThrowException() throws IllegalStateException {
+        Exception ex = assertThrows(IllegalStateException.class, () -> new ClassRecords("First Grade", new Random()).findStudentByName("Kovács Rita"));
+        assertEquals("No students to search!", ex.getMessage());
+    }
 
-//    @Test
-//    public void nonExistingStudentShouldThrowException() throws IllegalArgumentException {
-//        Exception ex = assertThrows(IllegalArgumentException.class, () -> classRecords.findStudentByName("Kiss Rita"));
-//        assertEquals("Student by this name cannot be found! Kiss Rita", ex.getMessage());
-//    }
+    @Test
+    public void nonExistingStudentShouldThrowException() throws IllegalArgumentException {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> classRecords.findStudentByName("Kiss Rita"));
+        assertEquals("Student by this name cannot be found! Kiss Rita", ex.getMessage());
+    }
 
     @Test
     public void testFindStudentByName() {
         assertEquals("Kovács Rita", classRecords.findStudentByName("Kovács Rita").getName());
     }
-//
-//    @Test
-//    public void emptyListException() throws IllegalStateException {
-//        Exception ex = assertThrows(IllegalStateException.class, () -> new ClassRecords("Fourth Grade", new Random()).repetition());
-//        assertEquals("No students to select for repetition!", ex.getMessage());
-//    }
+
+    @Test
+    public void emptyListException() throws IllegalStateException {
+        Exception ex = assertThrows(IllegalStateException.class, () -> new ClassRecords("Fourth Grade", new Random()).repetition());
+        assertEquals("No students to select for repetition!", ex.getMessage());
+    }
 
     @Test
     public void testRepetition() {
