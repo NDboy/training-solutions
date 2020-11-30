@@ -39,4 +39,25 @@ public class Transaction {
         return status;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public boolean isCredit() {
+        boolean switcher = false;
+        if (getTransactionOperation() == TransactionOperation.CREDIT) {
+            switcher = true;
+        }
+        return switcher;
+    }
+
+    public boolean isDebit() {
+        boolean switcher = false;
+        if (getTransactionOperation() == TransactionOperation.DEBIT) {
+            switcher = true;
+        }
+        return switcher;
+    }
+
+
 }

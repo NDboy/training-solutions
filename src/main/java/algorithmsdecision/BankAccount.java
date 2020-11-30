@@ -33,18 +33,5 @@ public class BankAccount {
         balance += amount;
     }
 
-    public boolean balanceGreaterThanLimit(List<Integer> bankAccounts, int limit) {
-        boolean isBalanceGreater = false;
-        int i = 0;
-        while (i < bankAccounts.size() && !isBalanceGreater) {
-            if(bankAccounts.get(i) > limit) {
-                isBalanceGreater = true;
-            }
-            i++;
-        }
-        return isBalanceGreater;
-
-    }
-
 
 }
