@@ -23,7 +23,7 @@ public class ListSelectorTest {
 
     @Test
     public void emptyTestToString() {
-        assertEquals("[]", listSelector.selectList(Arrays.asList("")));
+        assertEquals("", listSelector.selectList(Arrays.asList("")));
     }
 
 }
