@@ -9,6 +9,10 @@ public class Store {
         this.products = products;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
     public int getProductByCategoryName(Category category) {
         int counter = 0;
         for (Product product: products) {
@@ -19,8 +23,6 @@ public class Store {
         return counter;
     }
 
-    @Override
-    public String toString() { //teszteléshez
-        return products.toString();
-    }
+
+
 }
