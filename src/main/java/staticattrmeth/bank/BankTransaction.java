@@ -4,12 +4,18 @@ import java.math.BigDecimal;
 
 public class BankTransaction {
     private long trxValue;
-    public static int numberOfTransactions;
-    public static int sumOfTrxs;
-    public static long currentMinValue;
-    public static long currentMaxValue;
+    private static int numberOfTransactions;
+    private static int sumOfTrxs;
+    private static long currentMinValue;
+    private static long currentMaxValue;
+    private static final long TRX_MIN = 1;
+    private static final long TRX_MAX = 10000000;
+
 
     public BankTransaction(long trxValue) {
+        if (trxValue < TRX_MIN || trxValue > TRX_MAX) {
+            throw new IllegalArgumentException("Invalid argument!");
+        }
         this.trxValue = trxValue;
         numberOfTransactions++;
         if (currentMinValue == 0 || trxValue < currentMinValue) {
@@ -33,16 +39,15 @@ public class BankTransaction {
     }
 
     public static BigDecimal averageOfTransaction() {
-        BigDecimal average = BigDecimal.valueOf(sumOfTrxs / numberOfTransactions);
-        return average;
+        return numberOfTransactions == 0 ? BigDecimal.valueOf(0) : BigDecimal.valueOf(sumOfTrxs / numberOfTransactions);
     }
 
     public static long getCurrentMinValue() {
-        return currentMinValue;
+        return numberOfTransactions == 0 ? 0 : currentMinValue;
     }
 
     public static long getCurrentMaxValue() {
-        return currentMaxValue;
+        return numberOfTransactions == 0 ? 0 : currentMaxValue;
     }
 
     public static BigDecimal getSumOfTrxs() {
