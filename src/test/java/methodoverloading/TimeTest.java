@@ -88,5 +88,6 @@ public class TimeTest {
         //Then
         assertTrue(time.isEarlier(laterTime));
         assertFalse(time.isEarlier(earlierTime));
+
     }
 }
