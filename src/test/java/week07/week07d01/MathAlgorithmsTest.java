@@ -8,13 +8,14 @@ public class MathAlgorithmsTest {
 
     @Test
     public void testIsPrime() {
-    assertTrue(MathAlgorithms.isPrime(22221299));
+    assertFalse(MathAlgorithms.isPrime(1));
     assertFalse(MathAlgorithms.isPrime(25));
+    assertTrue(MathAlgorithms.isPrime(29));
     }
 
     @Test
     public void incorrectArgumentShouldThrowException() throws IllegalArgumentException {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> MathAlgorithms.isPrime(0));
-        assertEquals("The number must be positive!", ex.getMessage());
+        assertEquals("Wrong parameter!", ex.getMessage());
     }
 }
