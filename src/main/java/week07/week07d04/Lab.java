@@ -12,10 +12,22 @@ public class Lab {
         this.completed = false;
     }
 
-    public Lab(String title, boolean completed, int year, int month, int day) {
+    public Lab(String title,  int year, int month, int day) {
         this.title = title;
         this.completed = true;
         this.completedAt = LocalDate.of(year, month, day);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public LocalDate getCompletedAt() {
+        return completedAt;
     }
 
     public void complete(int year, int month, int day) {
@@ -30,7 +42,7 @@ public class Lab {
 
     @Override
     public String toString() {
-        return "title='" + title + ", completed=" + completed + ", completedAt=" + completedAt;
+        return "title=" + title + ", completed=" + completed + ", completedAt=" + completedAt;
     }
 }
 
