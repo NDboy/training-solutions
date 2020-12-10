@@ -9,7 +9,7 @@ public class FerryBoatTest {
 
     @Test
     public void load() {
-        FerryBoat ferryBoat = new FerryBoat(1000, 1000);
+        FerryBoat ferryBoat = new FerryBoat(1000, 100);
         assertEquals(0, ferryBoat.loadPassenger(56));
         assertEquals(0, ferryBoat.loadCargo(560));
 
@@ -19,7 +19,7 @@ public class FerryBoatTest {
 
     @Test
     public void loadToMuch() {
-        FerryBoat ferryBoat = new FerryBoat(100, 1000);
+        FerryBoat ferryBoat = new FerryBoat(1000, 100);
         assertEquals(11, ferryBoat.loadPassenger(111));
         assertEquals(100, ferryBoat.loadCargo(1100));
 

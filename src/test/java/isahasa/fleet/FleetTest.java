@@ -51,12 +51,12 @@ public class FleetTest {
         // Then
         assertEquals(100, liner1.getPassengers());
         assertEquals(200, liner2.getPassengers());
-//        assertEquals(40, ferryBoat.getPassengers());
-//        assertEquals(10, fleet.getWaitingPersons());
+        assertEquals(40, ferryBoat.getPassengers());
+        assertEquals(10, fleet.getWaitingPersons());
 
         assertEquals(50, cargoShip.getCargoWeight());
-//        assertEquals(100, ferryBoat.getCargoWeight());
+        assertEquals(100, ferryBoat.getCargoWeight());
 
-//        assertEquals(20, fleet.getWaitingCargo());
+        assertEquals(20, fleet.getWaitingCargo());
     }
 }

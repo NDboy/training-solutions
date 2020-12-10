@@ -4,7 +4,7 @@ public class FerryBoat implements Ship, CanCarryGoods, CanCarryPassengers{
     private CanCarryPassengers canCarryPassengers;
     private CanCarryGoods canCarryGoods;
 
-    public FerryBoat(int maxPassengers, int maxCargoWeight) {
+    public FerryBoat(int maxCargoWeight, int maxPassengers) {
         this.canCarryPassengers = new CanCarryPassengersBehaviour(maxPassengers) ;
         this.canCarryGoods = new CanCarryGoodsBehaviour(maxCargoWeight);
     }
