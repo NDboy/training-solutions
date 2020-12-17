@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StringLists {
 
-    public List<String> stringListsUnion(List<String> first, List<String> second) {
+    static List<String> stringListsUnion(List<String> first, List<String> second) {
         List<String> result = new ArrayList<>();
         for (String f: first) {
             if (!result.contains(f)) {
