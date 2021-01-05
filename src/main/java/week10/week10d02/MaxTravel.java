@@ -6,15 +6,17 @@ public class MaxTravel {
     public int getMaxIndex(List<Integer> passengerList) {
         int[] passengerArray = new int[30];
         int result = 0;
+        int buffer = 0;
         for (int i = 0; i < passengerList.size() ; i++) {
             passengerArray[passengerList.get(i)] ++;
         }
-        for (int item: passengerArray) {
-            if (item > result) {
-                result = item;
+        for (int i = 0; i < passengerArray.length; i++) {
+            if (passengerArray[i] > result) {
+                result = passengerArray[i];
+                buffer = i;
             }
         }
-        return result;
+        return buffer;
     }
 }
 
