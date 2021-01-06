@@ -1,4 +1,4 @@
 package week10;
 
-public class SkillNotFoundException extends Throwable {
+public class SkillNotFoundException extends RuntimeException {
 }

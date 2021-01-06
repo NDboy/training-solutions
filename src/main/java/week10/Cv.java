@@ -30,7 +30,7 @@ public class Cv {
         }
     }
 
-    public int findSkillLevelByName(String name) throws SkillNotFoundException {
+    public int findSkillLevelByName(String name) {
         int level = 0;
         for (Skill skill : skills)
             if (name.equals(skill.getName())) {
