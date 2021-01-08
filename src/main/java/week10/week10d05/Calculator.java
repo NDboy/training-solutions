@@ -7,6 +7,9 @@ import java.util.List;
 public class Calculator {
 
     public int findMinSum(int[] arr) {
+        if (arr == null || arr.length < 4) {
+            throw new IllegalArgumentException("Wrong argument!");
+        }
         int sum = 0;
         List<Integer> buffer = new ArrayList<>();
         for (int i : arr) {
