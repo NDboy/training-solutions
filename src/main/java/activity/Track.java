@@ -99,7 +99,7 @@ public class Track {
         double elevation = 0.0;
         boolean foundCoordinate = false;
         boolean foundElevation = false;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream/*Track.class.getResourceAsStream("/track.gpx")*/))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))){
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.trim().startsWith("<trkpt ")) {
@@ -123,7 +123,12 @@ public class Track {
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file", ioe);
         }
-
+        catch (NullPointerException npe) {
+            throw new IllegalArgumentException("Wrong argument", npe);
+        }
+        catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("Wrong argument", nfe);
+        }
 
     }
 
