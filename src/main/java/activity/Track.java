@@ -1,5 +1,10 @@
 package activity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +75,8 @@ public class Track {
     }
 
     public double getRectangleArea() {
-        return (findMaximumCoordinate().getLatitude() - findMinimumCoordinate().getLatitude()) * (findMaximumCoordinate().getLongitude() - findMinimumCoordinate().getLongitude());
+        return (findMaximumCoordinate().getLatitude() - findMinimumCoordinate().getLatitude()) *
+                (findMaximumCoordinate().getLongitude() - findMinimumCoordinate().getLongitude());
 
     }
 
@@ -85,4 +91,48 @@ public class Track {
         }
         return elevationSum;
     }
+
+
+    public void loadFromGpx(InputStream inputStream) {
+        double latitude = 0.0;
+        double longitude = 0.0;
+        double elevation = 0.0;
+        boolean foundCoordinate = false;
+        boolean foundElevation = false;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream/*Track.class.getResourceAsStream("/track.gpx")*/))){
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().startsWith("<trkpt ")) {
+                    latitude = Double.parseDouble(line.substring(15,25));
+                    longitude = Double.parseDouble(line.substring(32,42));
+                    foundCoordinate = true;
+                }
+                if (line.trim().startsWith("<ele")) {
+                    elevation = Double.parseDouble(line.substring(9,14));
+                    foundElevation = true;
+                }
+                if (foundCoordinate && foundElevation) {
+                    trackPoints.add(new TrackPoint(new Coordinate(latitude, longitude), elevation));
+                    latitude = 0.0;
+                    longitude = 0.0;
+                    elevation = 0.0;
+                    foundCoordinate = false;
+                    foundElevation = false;
+                }
+            }
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file", ioe);
+        }
+
+
+    }
+
+//    Írj egy loadFromGpx() metódust is, mely egy szabványos GPX fájlt tölt be!
+//    Itt azt figyeld, hogy a sor a <trkpt és <ele szöveggel kezdődik-e!
+//    Itt beégetheted, hogy a számok hanyadik karaktertől hanyadik karakterig tartanak.
+//    Egy Coordinate példányt hozz létre, ha belefutsz a <trkpt sorba!
+//    Egy TrackPoint példányt hozz létre, ha belefutsz a <ele sorba, és add hozzá a listához!
+//    Egy példa állományt az src/test/resources könyvtárban találsz.
+
+
 }
