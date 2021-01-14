@@ -11,11 +11,7 @@ public class FileSum {
     private List<String> listMaker() {
         List<String> fileNames = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            if (i < 10) {
-                fileNames.add(String.format("number0%d.txt", i));
-            } else if (i >= 10) {
-                fileNames.add(String.format("number%2d.txt", i));
-            }
+           fileNames.add(String.format("number%02d.txt", i));
         }
         return fileNames;
     }
