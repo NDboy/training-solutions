@@ -17,7 +17,7 @@ public class FileSum {
     }
 
     public int fileReaderAndParser(String pathString) {
-        int result =0;
+        int result = 0;
         if (Files.isRegularFile(Path.of(pathString))) {
             String content;
             try {
