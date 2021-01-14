@@ -8,8 +8,7 @@ import java.util.List;
 
 public class FileSum {
 
-    public int sumNumbers(){
-        int sum = 0;
+    private List<String> listMaker() {
         List<String> fileNames = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             if (i < 10) {
@@ -18,24 +17,31 @@ public class FileSum {
                 fileNames.add(String.format("number%2d.txt", i));
             }
         }
-        for (String fileName: fileNames) {
-            if (Files.isRegularFile(Path.of(fileName))) {
-                String content;
-                try {
-                    content = Files.readString(Path.of(fileName));
-                    sum += Integer.parseInt(content);
-                } catch (IOException ioe) {
-                    throw new IllegalStateException("Can not read file", ioe);
-                }
-            }
-        }
-        return sum;
+        return fileNames;
     }
 
+    public int fileReaderAndParser(String pathString) {
+        int result =0;
+        if (Files.isRegularFile(Path.of(pathString))) {
+            String content;
+            try {
+                content = Files.readString(Path.of(pathString));
+                result = Integer.parseInt(content);
+            } catch (IOException ioe) {
+                throw new IllegalStateException("Can not read file", ioe);
+            }
+        }
+        return result;
+    }
 
-    public static void main(String[] args) {
-        System.out.println(new FileSum().sumNumbers());
+    public int sumNumbers(){
+        int sum = 0;
+        List<String> fileNames = listMaker();
+        for (String fileName: fileNames) {
+            sum += fileReaderAndParser(fileName);
 
+        }
+        return sum;
     }
 
 }
