@@ -14,22 +14,28 @@ public class Activities {
         activities.add(activity);
     }
 
+
+    private double distanceByOneType(ActivityType activityType) {
+        double distance = 0.0;
+        for (Activity activity : activities) {
+            if (activity.getType() == activityType) {
+                distance += activity.getDistance();
+            }
+        }
+        return distance;
+    }
+
+
     public List<Report> distancesByTypes() {
         List<Report> reports = new ArrayList<>();
-        ActivityType activityType = ActivityType.BIKING;
-        double distance = 0.0;
-        for (int i = 0; i < 4; i++) {
-            for (Activity activity: activities) {
-                if (activity.getType() == activityType) {
-                    distance += activity.getDistance();
-                }
-            }
-            reports.add(new Report(activityType, distance));
-            distance = 0.0;
-            activityType = activityType.next();
+        for (int i = 0; i < ActivityType.values().length; i++) {
+
+            double distance = distanceByOneType(ActivityType.values()[i]);
+            reports.add(new Report(ActivityType.values()[i], distance));
         }
         return reports;
     }
+
 
     public int numberOfTrackActivities() {
         int counter = 0;

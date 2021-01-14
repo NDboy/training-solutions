@@ -20,8 +20,8 @@ public class Track {
     }
 
     public Coordinate findMaximumCoordinate() {
-        double maxLat = 0.0;
-        double maxLong = 0.0;
+        double maxLat = -90.0;
+        double maxLong = -180.0;
         for (TrackPoint point : trackPoints) {
             maxLat = Math.max(maxLat, point.getCoordinate().getLatitude());
             maxLong = Math.max(maxLong, point.getCoordinate().getLongitude());
@@ -30,8 +30,8 @@ public class Track {
     }
 
     public Coordinate findMinimumCoordinate() {
-        double minLat = 0.0;
-        double minLong = 0.0;
+        double minLat = 90.0;
+        double minLong = 180.0;
         for (TrackPoint point : trackPoints) {
              minLat= Math.min(minLat, point.getCoordinate().getLatitude());
             minLong = Math.min(minLong, point.getCoordinate().getLongitude());
