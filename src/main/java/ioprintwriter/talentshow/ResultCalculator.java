@@ -83,12 +83,5 @@ public class ResultCalculator {
         }
     }
 
-    public static void main(String[] args) {
-        ResultCalculator resultCalculator = new ResultCalculator();
-        resultCalculator.readTalents(Path.of("talents.txt"));
-        System.out.println(resultCalculator.getProductions().get(1).getId());
-        System.out.println(resultCalculator.getProductions().get(1).getName());
-        resultCalculator.calculateVotes(Path.of("votes.txt"));
-        resultCalculator.writeResultToFile(Path.of("winner.txt"));
-    }
+
 }
