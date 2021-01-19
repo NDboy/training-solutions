@@ -2,10 +2,13 @@ package week07.week07d04;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Practise {
 
@@ -156,7 +159,6 @@ public class Practise {
 //        }
 //        return grades;
 //    }
-
 
 
 //    static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
@@ -512,7 +514,6 @@ public class Practise {
 //        return counter;
 //    }
 
-
 //    static int viralAdvertising(int n) {
 //        int counter = 0;
 //        int puffer = 5;
@@ -524,7 +525,6 @@ public class Practise {
 //
 //    }
 
-
 //    static int[] circularArrayRotation(int[] a, int k, int[] queries) {
 //        int [] result = new int[queries.length];
 //        for(int j = 0; j < queries.length; j++) {
@@ -532,7 +532,6 @@ public class Practise {
 //        }
 //        return result;
 //    }
-
 
 
 //    static int[] permutationEquation(int[] p) {
@@ -549,7 +548,6 @@ public class Practise {
 //        return result;
 //    }
 
-
 //    static int jumpingOnClouds(int[] c, int k) {
 //        int power = 99 - (2 * c[0]);
 //        for (int i = 0; i < c.length - k; i+=k) {
@@ -557,7 +555,6 @@ public class Practise {
 //        }
 //        return power;
 //    }
-
 
 //    static int findDigits(int n) {
 //        int counter = 0;
@@ -571,47 +568,527 @@ public class Practise {
 //
 //    }
 
+//    static void extraLongFactorials(int n) {
+//        BigDecimal big = new BigDecimal(n);
+//        for (int i = 1; i < n; i++) {
+//            big = new BigDecimal(i).multiply(big);
+//        }
+//        System.out.println(big);
+//    }
 
-    static void extraLongFactorials(int n) {
-        BigDecimal big = new BigDecimal(n);
-        for (int i = 1; i < n; i++) {
-            big = new BigDecimal(i).multiply(big);
+//    static int squares(int a, int b) {
+//        int counter = 0;
+//        for (int i = (int)Math.sqrt((double)a); i < b; i++) {
+//            if (Math.pow((double)i, 2.0) >= a && Math.pow((double)i, 2.0) <= b) {
+//                counter++;
+//            }
+//        }
+//
+//        return counter;
+//    }
+
+//    static int libraryFine(int d1, int m1, int y1, int d2, int m2, int y2) {
+//        LocalDate actual = LocalDate.of(y1,m1,d1);
+//        LocalDate dueTo = LocalDate.of(y2,m2,d2);
+//        int fine = 0;
+//        if (actual.isBefore(dueTo) || actual.isEqual(dueTo)) {
+//            fine = 0;
+//        } else {
+//            if (actual.getYear() == dueTo.getYear() && actual.getMonth() == dueTo.getMonth()) {
+//                fine = (int)ChronoUnit.DAYS.between(dueTo, actual) * 15;;
+//            } else if (actual.getYear() == dueTo.getYear() && actual.getMonth() != dueTo.getMonth()) {
+//                fine =  (m1-m2) * 500;;
+//            } else if (actual.getYear() != dueTo.getYear()) {
+//                fine = 10000;
+//            }
+//        }
+//        return fine;
+//    }
+
+//    static int[] cutTheSticks(int[] arr) {
+//        List<Integer> sticks = new ArrayList<>(arr.length);
+//        for (int ar: arr) {
+//            sticks.add(ar);
+//        }
+//        List<Integer> results = new ArrayList<>();
+//        List<Integer> puffer = new ArrayList<>(arr.length);
+//
+//        int actual = 0;
+//        while (sticks.size() > 0) {
+//            int shortest = sticks.get(0);
+//            results.add(sticks.size());
+//            for (Integer stick: sticks) {
+//                shortest = Math.min(stick, shortest);
+//            }
+//            for (Integer stick: sticks) {
+//                actual = stick - shortest;
+//                if (actual > 0) {
+//                    puffer.add(actual);
+//                }
+//            }
+//            sticks.clear();
+//            sticks.addAll(puffer);
+//            puffer.clear();
+//        }
+//        int[] result = new int[results.size()];
+//        for (int i = 0; i < results.size(); i++) {
+//            result[i] = results.get(i);
+//        }
+//        return result;
+//    }
+
+//    static long repeatedString(String s, long n) {
+//        long counter = 0;
+//        if (s.length() < n) {
+//            for (int i = 0; i < s.length(); i++) {
+//                if (s.charAt(i) == 'a') {
+//                    counter++;
+//                }
+//            }
+//            counter *= n / s.length();
+//        }
+//        for (int i = 0; i < n % s.length(); i++) {
+//            if (s.charAt(i) == 'a') {
+//                counter++;
+//            }
+//        }
+//        return counter;
+//    }
+
+//    static int jumpingOnClouds(int[] c) {
+//        int jumps = 0;
+//        for (int i = 0; i < c.length - 1; i+=2) {
+//            jumps++;
+//            if (i != 0 && c[i] == 1) {
+//                i--;
+//            }
+//        }
+//        return jumps;
+//    }
+
+//    static int equalizeArray(int[] arr) {
+//        int buffer = 1;
+//        int counter = 0;
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int ar: arr) {
+//                if (arr[i] == ar) {
+//                    counter++;
+//                }
+//            }
+//            if (counter > buffer) {
+//                buffer = counter;
+//            }
+//            counter = 0;
+//        }
+//        return arr.length - buffer;
+//    }
+
+//    public static long taumBday(int b, int w, int bc, int wc, int z) {
+//        long result = 0;
+//        if (Math.abs(bc - wc) <= z) {
+//            result = b * bc + w * wc;
+//        } else if ((bc - wc) > z) {
+//            result = w * wc + (wc + z) * b;
+//        } else if ((wc - bc) > z) {
+//            result = b * bc + (bc + z) * w;
+//        }
+//        return result;
+//    }
+
+//    static int[] acmTeam(String[] topic) {
+//        int[] result = new int[2];
+//        int counter = 0;
+//        int buffer = 0;
+//        int max = 0;
+//        for (int i = 0; i < topic.length; i++) {
+//            for (int j = i + 1; j < topic.length; j++) {
+//                for (int k = 0; k < topic[i].length(); k++) {
+//                    if (topic[i].charAt(k) == '1' || topic[j].charAt(k) == '1') {
+//                        counter++;
+//                    }
+//                }
+//                if (counter > buffer) {
+//                    buffer = counter;
+//                    max = 1;
+//                } else if (counter == buffer) {
+//                    max++;
+//                }
+//                counter = 0;
+//            }
+//        }
+//        result [0] = buffer;
+//        result [1] = max;
+//        return result;
+//    }
+
+//    static boolean isKaprekar (int n) {
+//        boolean isTrue = false;
+//        StringBuilder sbl = new StringBuilder();
+//        StringBuilder sbr = new StringBuilder();
+//        String nStr = Integer.toString(n);
+//        String str = Long.toString((long)Math.pow(n, 2.0));
+//
+//            sbl.append(str.substring(0, str.length() - nStr.length()));
+//            for (int i = str.length() - nStr.length(); i < str.length(); i++) {
+//                if (str.charAt(i) != '0') {
+//                    sbr.append(str.charAt(i));
+//                } else if (str.charAt(i) == '0' && sbr.length() > 0) {
+//                    sbr.append(str.charAt(i));
+//                }
+//            }
+//            if (sbl.length() == 0) {
+//                sbl.append("0");
+//            }
+//            if (sbr.length() > 0 && n == Integer.parseInt(sbl.toString()) + Integer.parseInt(sbr.toString())) {
+//                isTrue = true;
+//            }
+//        return isTrue;
+//    }
+//
+//
+//    static void kaprekarNumbers(int p, int q) {
+//        StringBuilder result = new StringBuilder();
+//        for (int i = p; i <= q; i++) {
+//            if (isKaprekar(i)) {
+//                result.append(i + " ");
+//            }
+//        }
+//        if (result.length() == 0) {
+//            System.out.println("INVALID RANGE");
+//        } else {
+//            System.out.println(result.toString().trim());
+//        }
+//    }
+
+//    static int beautifulTriplets(int d, int[] arr) {
+//        List<Integer> list = new ArrayList<>();
+//        int counter = 0;
+//        int plusDCounter = 0;
+//        int plus2DCounter = 0;
+//        for (int i = 0; i < arr.length; i++) {
+//            list.add(arr[i]);
+//        }
+//        for (int i = 0; i < list.size(); i++) {
+//            for (int j = i + 1; j < list.size(); j++) {
+//                if (list.get(j) == list.get(i) + d) {
+//                    plusDCounter++;
+//                } else if (list.get(j) == list.get(i) + 2 * d) {
+//                    plus2DCounter++;
+//                }
+//            }
+//            if (plusDCounter > 0 && plus2DCounter > 0) {
+//                counter += plusDCounter * plus2DCounter;
+//            }
+//            plus2DCounter = 0;
+//            plusDCounter = 0;
+//        }
+//        return counter;
+//    }
+
+//    static int minimumDistances(int[] a) {
+//        int buffer = -1;
+//        int difference = 0;
+//        for (int i = 0; i < a.length; i++) {
+//            for (int j = i + 1; j < a.length; j++) {
+//                if (a[i] == a[j]) {
+//                    difference = j - i;
+//                    if (buffer == -1 || difference < buffer) {
+//                        buffer = difference;
+//                    }
+//                }
+//            }
+//        }
+//        return buffer;
+//    }
+
+//    static int howManyGames(int p, int d, int m, int s) {
+//        int counter = 0;
+//        for (int i = p; s >= 0; i-=d) {
+//            s -= Math.max(i , m);
+//            counter++;
+//        }
+//        return counter;
+//    }
+
+//    static int chocolateFeast(int n, int c, int m) {
+//        int result = 0;
+//        int wrappers = 0;
+//        while (n >= c || wrappers >= m) {
+//            if (n >= c) {
+//                result++;
+//                n -= c;
+//                wrappers ++;
+//            } else {
+//                result++;
+//                wrappers -= m;
+//                wrappers++;
+//            }
+//        }
+//        return result;
+//
+//    }
+
+//    static int[] serviceLane(int n, int[][] cases, int[] width) {
+//        int [] result = new int[cases.length];
+//        int min = 3;
+//        for (int i = 0; i < cases.length; i++) {
+//            for (int j = cases[i][0]; j <= cases[i][1] ; j++) {
+//                min = Math.min(min, width[j]);
+//            }
+//            result[i] = min;
+//            min = 3;
+//        }
+//        return result;
+//    }
+
+//    static int workbook(int n, int k, int[] arr) {
+//        int counter = 0;
+//        int result = 0;
+//        int page = 1;
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 1; j <= arr[i]; j++) {
+//                counter++;
+//                if (counter > k) {
+//                    page++;
+//                    counter = 1;
+//                }
+//                if (page == j) {
+//                    result++;
+//                }
+//            }
+//            counter = 0;
+//            page++;
+//        }
+//        return result;
+//
+//    }
+
+//    static String fairRations(int[] B) {
+//        List<Integer> list = new ArrayList<>();
+//        int counter = 0;
+//        for (int b: B) {
+//            list.add(b);
+//        }
+//        for (int i = 0; i < list.size() - 1; i++) {
+//            if (list.get(i) % 2 != 0) {
+//                list.set(i, list.get(i) + 1);
+//                list.set(i + 1, list.get(i + 1) + 1);
+//                counter += 2;
+//            }
+//        }
+//        if (list.get(list.size() - 1) % 2 != 0) {
+//            System.out.println("NO");
+//            return "NO";
+//        } else {
+//            return Integer.toString(counter);
+//        }
+////    }
+
+//    static String[] cavityMap(String[] grid) {
+//        String [] result = grid.clone();
+//        for (int i = 1; i < grid.length - 1; i++) {
+//            for (int j = 1; j < grid[i].length() - 1; j++) {
+//                if (    Integer.parseInt(grid[i].substring(j,j+1)) > Integer.parseInt(grid[i - 1].substring(j,j+1)) && Integer.parseInt(grid[i].substring(j,j+1)) > Integer.parseInt(grid[i + 1].substring(j,j+1)) &&
+//                        Integer.parseInt(grid[i].substring(j,j+1)) > Integer.parseInt(grid[i].substring(j - 1,j)) && Integer.parseInt(grid[i].substring(j,j+1)) > Integer.parseInt(grid[i].substring(j + 1,j + 2))) {
+//                    char [] line = result[i].toCharArray();
+//                    line[j] = 'X';
+//                    result[i] = new String(line);
+//                }
+//            }
+//        }
+//        return result;
+//    }
+
+//    static int[] stones(int n, int a, int b) {
+//        if (a == b) {
+//            int [] result = new int[1];
+//            result[0] = (n-1) * a;
+//            return result;
+//        } else {
+//            int[] result = new int[n];
+//            for (int i = 1; i <= n; i++) {
+//                result[i - 1] = Math.min(a, b) * (n - i) + Math.max(a, b) * (i - 1);
+//            }
+//            return result;
+//        }
+//    }
+
+//    static int flatlandSpaceStations(int n, int[] c) {
+//        int result = 0;
+//        int min;
+//        for (int i = 0; i < n; i++) {
+//            min = n;
+//            for (int j = 0; j < c.length; j++) {
+//                min = Math.min(min, Math.abs(c[j] - i));
+//            }
+//            result = Math.max(result, min);
+//        }
+//        return result;
+//    }
+
+//    static String happyLadybugs(String b) {
+//        String result = "NO";
+//        boolean happy = true;
+//        int counter = 0;
+//        for (int i = 0; i < b.length(); i++) {
+//            for (int j = 0; j < b.length(); j++) {
+//                if (b.charAt(i) == b.charAt(j) && b.charAt(i) != '_') {
+//                    counter++;
+//                }
+//            }
+//            if (counter < 2 && b.charAt(i) != '_') {
+//                happy = false;
+//            }
+//            counter = 0;
+//        }
+//        if (b.contains("_") && happy) {
+//            result = "YES";
+//        }
+//        if (!b.contains("_") && b.length() > 1 && b.charAt(0) == b.charAt(1) && b.charAt(b.length()-1) == b.charAt(b.length()-2)) {
+//            happy = true;
+//            for (int i = 1; i < b.length() - 1; i++) {
+//                if (b.charAt(i) != b.charAt(i - 1) && b.charAt(i) != b.charAt(i + 1)) {
+//                    happy = false;
+//                }
+//            }
+//            if (happy) {
+//                result = "YES";
+//            }
+//        }
+//        return result;
+//    }
+
+//    static long strangeCounter(long t) {
+//        long counter = 1;
+//        long result = 3;
+//        for (int i = 1; i < t; i++) {
+//            result--;
+//            if (result < 1) {
+//                counter *= 2;
+//                result = 3 * counter;
+//            }
+//        }
+//        return result;
+//    }
+
+//    static void insertionSort1(int n, int[] arr) {
+//        int [] buffer = arr.clone();
+//        int last = arr[n - 1];
+//        boolean isOk = true;
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = n - 1; i >= 0 && isOk; i--) {
+//            if (i > 0) {
+//                if (arr[i - 1] > last) {
+//                    buffer[i] = arr[i - 1];
+//                } else if (arr[i - 1] < last) {
+//                    buffer[i] = last;
+//                    isOk = false;
+//                }
+//            } else {
+//                buffer[i] = last;
+//            }
+//            for (int item: buffer) {
+//                sb.append(item + " ");
+//            }
+//            System.out.println(sb.toString().trim());
+//            sb = new StringBuilder();
+//        }
+//    }
+
+//    static void insertionSort2(int n, int[] arr) {
+//        int buffer = 0;
+//        List<Integer> list = new ArrayList<>(n);
+//        for (int i: arr) {
+//            list.add(i);
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 1; i < n; i++) {
+//            for (int j = 0; j < i; j++) {
+//                if (list.get(i) < list.get(j)) {
+//                    buffer = list.get(i);
+//                    list.remove(i);
+//                    list.add(j, buffer);
+//                }
+//            }
+//        }
+//        for (Integer item : list) {
+//            sb.append(item + " ");
+//        }
+//        System.out.println(sb.toString().trim());
+//    }
+
+//    static int runningTime(int[] arr) {
+//        int buffer = 0;
+//        int result = 0;
+//        List<Integer> list = new ArrayList<>(arr.length);
+//        for (int i: arr) {
+//            list.add(i);
+//        }
+//        for (int i = 1; i < arr.length; i++) {
+//            for (int j = 0; j < i; j++) {
+//                if (list.get(i) < list.get(j)) {
+//                    buffer = list.get(i);
+//                    list.remove(i);
+//                    list.add(j, buffer);
+//                    result += Math.abs(i - j);
+//                }
+//            }
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        for (Integer item : list) {
+//            sb.append(item + " ");
+//        }
+//        System.out.println(sb.toString().trim());
+//
+//        return result;
+//
+//    }
+
+//    static int[] quickSort(int[] arr) {
+//        List<Integer> result = new ArrayList<>();
+//        List<Integer> left = new ArrayList<>();
+//        List<Integer> right = new ArrayList<>();
+//        int first = arr[0];
+//        for (int item: arr) {
+//            if (item < first) {
+//                left.add(item);
+//            } else if (item > first) {
+//                right.add(item);
+//            }
+//        }
+//        result.addAll(left);
+//        result.add(first);
+//        result.addAll(right);
+//        int [] resultArray = new int [result.size()];
+//        for (int i = 0; i < result.size(); i++) {
+//            resultArray[i] = result.get(i);
+//        }
+//        return resultArray;
+//    }
+
+    public int findDivisors(int num){
+        String strNum = Integer.toString(num);
+        int counter = 0;
+        for (int i = 0; i < strNum.length(); i++) {
+            if (i < strNum.length() - 1 && num % Integer.parseInt(strNum.substring(i, i+1)) == 0) {
+                counter++;
+            } else if (i == strNum.length() - 1 && num % Integer.parseInt(strNum.substring(i)) == 0) {
+                counter++;
+            }
         }
-        System.out.println(big);
+        return counter;
     }
-
 
 
 
     public static void main(String[] args) {
 
+//        int [] res = {10,9,8,7,6,5,4,3,2,1};
+//        int res[] = {4,5,3,7,2};
 
-//        System.out.println(Practise.countingValleys(8, "UDDDUDUU"));
-
-//        int [] res = {1, 7, 14, 8, 2, 1, 7, 14, 8, 2};
-//        res[0] = 2;
-        int [] res2 = {0,1,1,0,1,0,1,1,0,1,1,0,0,0,0,0,1,1,1,1,1,0,1,0};
-//        int i = 1 ^ 2;
-//        System.out.println(Practise.xorMatrix(2, res).length);
-//        System.out.println(Practise.xorMatrix(2, res)[0]);
-
-//          System.out.println(Practise.migratoryBirds(Arrays.asList(33,37,38,41,43,44,45,55,57,11,58,87,38,11,14,37,15,-5,-9,45,88,57,88,33,33,11,11,33,41,11,88)));
-//        System.out.println(Practise.dayOfProgrammer(1918));
-//        List<Integer> ranked = new ArrayList<>();
-//        List<Integer> player = new ArrayList<>();
-//        Scanner scanner = new Scanner("997 981 957 933 930 927 926 920 916 896 887 874 863 863 858 847 815 809 803 794 789 785 783 778 764 755 751 740 737 730 691 677 652 650 587 585 583 568 546 541 540 538 531 527 506 493 457 435 430 427 422 422 414 404 400 394 387 384 374 371 369 369 368 365 363 337 336 328 325 316 314 306 282 277 230 227 212 199 179 173 171 168 136 125 124 95 92 88 85 70 68 61 60 59 44 43 28 23 13 12");
-//        while (scanner.hasNextInt()) {
-//            ranked.add(scanner.nextInt());
-//        }
-//        Scanner scanner1 = new Scanner("12 20 30 32 35 37 63 72 83 85 96 98 98 118 122 125 129 132 140 144 150 164 184 191 194 198 200 220 228 229 229 236 238 246 259 271 276 281 283 287 300 302 306 307 312 318 321 325 341 341 341 344 349 351 354 356 366 369 370 379 380 380 396 405 408 417 423 429 433 435 438 441 442 444 445 445 452 453 465 466 467 468 469 471 475 482 489 491 492 493 498 500 501 504 506 508 523 529 530 539 543 551 552 556 568 569 571 587 591 601 602 606 607 612 614 619 620 623 625 625 627 638 645 653 661 662 669 670 676 684 689 690 709 709 710 716 724 726 730 731 733 737 744 744 747 757 764 765 765 772 773 774 777 787 794 796 797 802 805 811 814 819 819 829 830 841 842 847 857 857 859 860 866 872 879 882 895 900 900 903 905 915 918 918 922 925 927 928 929 931 934 937 955 960 966 974 982 988 996 996");
-//        while (scanner1.hasNextInt()) {
-//            player.add(scanner1.nextInt());
-//        }
-
-//        System.out.println(stringListsUnion(Arrays.asList("alma", "körte", "banán", "szőlő", "alma"), Arrays.asList("kókusz", "körte", "narancs", "dinnye", "alma")));
-        extraLongFactorials(30);
-
-
+//        System.out.println(Arrays.toString(quickSort(res)));
+//        System.out.println();
+        System.out.println(new Practise().findDivisors(425));
 
     }
 }
