@@ -19,6 +19,24 @@ public class ShoppingListManager {
         }
     }
 
+//    public void saveShoppingList(OutputStream os, List<String> shoppingList) {
+//        try (Writer bw = new OutputStreamWriter(os)) {
+//            for (String item : shoppingList) {
+//                bw.write(item);
+//                bw.write("\n");
+//            }
+//        } catch (IOException ioe) {
+//            throw new IllegalStateException("Can not write file", ioe);
+//        }
+//    }
+
+//    public void saveShoppingList(OutputStream os, List<String> shoppingList) {
+//        try (PrintStream ps = new PrintStream(new BufferedOutputStream(os))){
+//            for (String item: shoppingList) {
+//                ps.println(item);
+//            }
+//        }
+//    }
 
     public List<String> loadShoppingList(InputStream is) {
         List<String> shoppingList = new ArrayList<>();
