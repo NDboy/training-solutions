@@ -42,6 +42,7 @@ class LibraryTest {
         library.add(new Book("George Orwell", "1984"));
         assertEquals(6, library.getBookList().size());
         assertEquals("1984", library.getBookList().get(5).getTitle());
+
         assertFalse(library.add(new Book("George Orwell", "1984")));
 
     }
