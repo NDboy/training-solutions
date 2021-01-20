@@ -13,7 +13,7 @@ public class Lottery {
         List<Integer> selectedNumbers = new ArrayList<>();
         Random rnd = new Random();
         while (selectedNumbers.size() < lotteryType) {
-            int number = rnd.nextInt(90) + 1;
+            int number = rnd.nextInt(ballCount) + 1;
             if (!selectedNumbers.contains(number)) {
                 selectedNumbers.add(number);
             }
