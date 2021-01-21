@@ -13,8 +13,8 @@ public class ByteChecker {
             byte[] buffer = new byte[1000];
             int size;
             while ((size = bis.read(buffer)) > 0) {
-                for (byte b: buffer){
-                    if (b == 97) {
+                for (int i = 0; i < size; i++){
+                    if (buffer[i] == 97) {
                         counter++;
                     }
                 }
