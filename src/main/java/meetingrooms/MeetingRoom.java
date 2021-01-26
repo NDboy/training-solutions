@@ -1,4 +1,4 @@
-package meetingroom;
+package meetingrooms;
 
 public class MeetingRoom {
     private String name;

@@ -1,4 +1,4 @@
-package meetingroom;
+package meetingrooms;
 
 // ebben az osztályban többféle metódus típust ki akartam próbálni, működik!!!!
 
