@@ -4,10 +4,7 @@ import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Practise {
@@ -1066,17 +1063,31 @@ public class Practise {
 //        return resultArray;
 //    }
 
-    public int findDivisors(int num){
-        String strNum = Integer.toString(num);
-        int counter = 0;
-        for (int i = 0; i < strNum.length(); i++) {
-            if (i < strNum.length() - 1 && num % Integer.parseInt(strNum.substring(i, i+1)) == 0) {
-                counter++;
-            } else if (i == strNum.length() - 1 && num % Integer.parseInt(strNum.substring(i)) == 0) {
-                counter++;
+//    public int findDivisors(int num){
+//        String strNum = Integer.toString(num);
+//        int counter = 0;
+//        for (int i = 0; i < strNum.length(); i++) {
+//            if (i < strNum.length() - 1 && num % Integer.parseInt(strNum.substring(i, i+1)) == 0) {
+//                counter++;
+//            } else if (i == strNum.length() - 1 && num % Integer.parseInt(strNum.substring(i)) == 0) {
+//                counter++;
+//            }
+//        }
+//        return counter;
+//    }
+
+    public static Map<Character, List<String>> index(List<String> names) {
+        Map<Character, List<String>> result = new HashMap<>();
+        for (String name: names){
+            if (!result.containsKey(name.charAt(0))) {
+                List<String> listWithLetter = new ArrayList<>();
+                listWithLetter.add(name);
+                result.put(name.charAt(0), listWithLetter);
+            } else {
+                result.get(name.charAt(0)).add(name);
             }
         }
-        return counter;
+        return result;
     }
 
 
@@ -1088,7 +1099,7 @@ public class Practise {
 
 //        System.out.println(Arrays.toString(quickSort(res)));
 //        System.out.println();
-        System.out.println(new Practise().findDivisors(425));
-
+        List<String> list = Arrays.asList("Nóra", "Nándor", "Amál", "Mária", "Márton");
+        System.out.println(index(list));
     }
 }
