@@ -1099,7 +1099,7 @@ public class Practise {
 
 //        System.out.println(Arrays.toString(quickSort(res)));
 //        System.out.println();
-        List<String> list = Arrays.asList("Nóra", "Nándor", "Amál", "Mária", "Márton");
-        System.out.println(index(list));
+//        List<String> list = Arrays.asList("Nóra", "Nándor", "Amál", "Mária", "Márton");
+//        System.out.println(index(list));
     }
 }
