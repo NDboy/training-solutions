@@ -30,5 +30,8 @@ public class BookStore {
 
     public List<Book> getByYearOfPublish(int yearOfPublish) {
         return books.stream().collect(Collectors.groupingBy(Book::getYearOfPublish)).get(yearOfPublish);
+//        return books.stream().filter(a -> a.getYearOfPublish() == yearOfPublish).collect(ArrayList::new, List::add, List::addAll);
     }
+
+//    Map<City, Set<String>> namesByCity = people.stream().collect(groupingBy(Person::getCity, mapping(Person::getLastName, toSet())));
 }
