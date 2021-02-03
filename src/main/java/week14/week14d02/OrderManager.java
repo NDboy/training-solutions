@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OrderManager {
 
@@ -43,11 +44,11 @@ public class OrderManager {
 
 
     public int countSoldProductByName(String product) {
-        return (int) (combineLists().stream().filter(i -> i.equals(product)).count());
+        return (int) (combineValueLists().stream().filter(i -> i.equals(product)).count());
     }
 
 
-    private List<String> combineLists() {
+    private List<String> combineValueLists() {
         List<String> productsSum = new ArrayList<>();
         for (List<String> productList : orders.values()){
             productsSum.addAll(productList);
@@ -61,17 +62,18 @@ public class OrderManager {
     }
 
 
-    public Map<String, Integer> makeStatisticsInMap() {
-        Map<String, Integer> statistics = new TreeMap<>();
-        for (String product : combineLists()) {
-            if (!statistics.containsKey(product)) {
-                statistics.put(product, 1);
-            } else {
-                int newCount = statistics.get(product);
-                statistics.put(product, newCount + 1);
-            }
-        }
-        return statistics;
+    public Map<String, Long> makeStatisticsInMap() {
+//        Map<String, Integer> statistics = new TreeMap<>();
+//        for (String product : combineValueLists()) {
+//            if (!statistics.containsKey(product)) {
+//                statistics.put(product, 1);
+//            } else {
+//                int newCount = statistics.get(product);
+//                statistics.put(product, newCount + 1);
+//            }
+//        }
+        return combineValueLists().stream().collect(Collectors.groupingBy(String::toString, Collectors.counting()));
+
     }
 
 
