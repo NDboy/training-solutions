@@ -17,6 +17,18 @@ public class Function {
         return result;
     }
 
+    public Map.Entry<Double, Double> findMaxValueEntry(Map<Double, Double> nums) {
+        Map.Entry<Double, Double> maxEntry = null;
+        double maxValue = Double.MIN_VALUE;
+        for (Map.Entry<Double, Double> actual: nums.entrySet()) {
+            if (maxValue < actual.getValue()) {
+                maxEntry = actual;
+                maxValue = actual.getValue();
+            }
+        }
+        return maxEntry;
+    }
+
 }
 
 //    Adott egy függvénygrafikon a koordináta rendszerben.
