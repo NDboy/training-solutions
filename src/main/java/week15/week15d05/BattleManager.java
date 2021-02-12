@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import java.util.HashMap;
-
-import java.util.Map;
+import java.util.*;
 
 public class BattleManager {
 
@@ -19,37 +17,49 @@ public class BattleManager {
             String line;
             reader.readLine();
             while ((line = reader.readLine()) != null) {
-                String [] lineArray = line.split(",");
-
-                boolean singleFound = false;
-                for (int i = 5; i < 13; i++) {
-                    if (!isEmpty(lineArray[i]) && !result.containsKey(lineArray[i])) {
-                        result.put(lineArray[i], 1);
-                        singleFound = true;
-                    } else if (!isEmpty(lineArray[i]) && !singleFound){
-                        int newValue = result.get(lineArray[i]) + 1;
-                        result.put(lineArray[i], newValue);
-                    }
-                }
+                Set<String> familiesSet = splitStringToSet(line);
+                putFamiliesToMapFromSet(result, familiesSet);
             }
         }
         catch (IOException ioe) {
             throw new IllegalStateException("Can not read file");
         }
-        String family = null;
-        int max = 0;
-        for (String key: result.keySet()) {
-            if (result.get(key) > max) {
-                family = key;
-                max = result.get(key);
-            }
-        }
-        return family;
+        return findKeyWithMaxValue(result);
+    }
+
+    private Set<String> splitStringToSet(String lineString) {
+        String [] lineArray = lineString.split(",");
+        String [] onlyFamiliesArray = Arrays.copyOfRange(lineArray, 5, 13);
+        return new HashSet<>(Arrays.asList(onlyFamiliesArray));
     }
 
     private boolean isEmpty(String str) {
         return str == null || str.isBlank();
     }
 
+    private void putFamiliesToMapFromSet(Map<String, Integer> mapReference, Set<String> familySet) {
+        for (String family: familySet) {
+            if (!isEmpty(family)) {
+                if (!mapReference.containsKey(family)) {
+                    mapReference.put(family, 1);
+                } else {
+                    int newValue = mapReference.get(family) + 1;
+                    mapReference.put(family, newValue);
+                }
+            }
+        }
+    }
+
+    private String findKeyWithMaxValue(Map<String, Integer> mapReference) {
+        String mostAggressiveFamily = null;
+        int max = 0;
+        for (String key: mapReference.keySet()) {
+            if (mapReference.get(key) > max) {
+                mostAggressiveFamily = key;
+                max = mapReference.get(key);
+            }
+        }
+        return mostAggressiveFamily;
+    }
 
 }
