@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BattleManager {
 
@@ -24,13 +25,16 @@ public class BattleManager {
         catch (IOException ioe) {
             throw new IllegalStateException("Can not read file");
         }
+        System.out.println(result);
         return findKeyWithMaxValue(result);
     }
 
     private Set<String> splitStringToSet(String lineString) {
-        String [] lineArray = lineString.split(",");
-        String [] onlyFamiliesArray = Arrays.copyOfRange(lineArray, 5, 13);
-        return new HashSet<>(Arrays.asList(onlyFamiliesArray));
+        return Arrays.stream(lineString.split(","))
+                .skip(5)
+                .limit(8)
+                .filter(a->!isEmpty(a))
+                .collect(Collectors.toSet());
     }
 
     private boolean isEmpty(String str) {
@@ -39,14 +43,12 @@ public class BattleManager {
 
     private void putFamiliesToMapFromSet(Map<String, Integer> mapReference, Set<String> familySet) {
         for (String family: familySet) {
-            if (!isEmpty(family)) {
                 if (!mapReference.containsKey(family)) {
                     mapReference.put(family, 1);
                 } else {
                     int newValue = mapReference.get(family) + 1;
                     mapReference.put(family, newValue);
                 }
-            }
         }
     }
 
@@ -60,6 +62,11 @@ public class BattleManager {
             }
         }
         return mostAggressiveFamily;
+    }
+
+    public static void main(String[] args) {
+        BattleManager bm = new BattleManager();
+        System.out.println(bm.findMostFightingFamily());
     }
 
 }
