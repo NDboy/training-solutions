@@ -22,6 +22,13 @@ public class Activity {
         this.type = type;
     }
 
+    public Activity(Activity activity, long id) {
+        this.id = id;
+        this.startTime = activity.startTime;
+        this.desc = activity.desc;
+        this.type = activity.type;
+    }
+
     public long getId() {
         return id;
     }

@@ -1,10 +1,9 @@
 package activitytracker;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.sql.DataSource;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,32 @@ public class ActivityDao {
         }
         catch (SQLException se) {
             throw new IllegalStateException("Connection failed");
+        }
+    }
+
+    public Activity saveActivityAndReturnWithGeneratedId(Activity activity) {
+        try (PreparedStatement stmt = dataSource.getConnection().prepareStatement("insert into activities(start_time, activity_desc, activity_type) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS)){
+            stmt.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
+            stmt.setString(2, activity.getDesc());
+            stmt.setString(3, activity.getType().getValue());
+            stmt.executeUpdate();
+            return getActivityByStatement(activity, stmt);
+        }
+        catch (SQLException se) {
+            throw new IllegalStateException("Connection failed");
+        }
+    }
+
+    @NotNull
+    private Activity getActivityByStatement(Activity activity, PreparedStatement stmt){
+        try (ResultSet rs = stmt.getGeneratedKeys()){
+            if (rs.next()) {
+                return new Activity(activity, rs.getLong(1));
+            }
+            throw new IllegalStateException("Cannot get id");
+        }
+        catch (SQLException se) {
+            throw new IllegalStateException("Cannot get id", se);
         }
     }
 

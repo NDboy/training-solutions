@@ -1,5 +1,8 @@
 package week07.week07d04;
 
+import org.junit.platform.commons.util.ToStringBuilder;
+
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
@@ -1092,16 +1095,56 @@ public class Practise {
         return result;
     }
 
+    public static class Trainer{
+        private String name;
+        private int id;
+
+        public Trainer(String name, int id) {
+            this.name = name;
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        @Override
+        public String toString() {
+            return name + " " + id + "\n";
+        }
+    }
+
 
 
     public static void main(String[] args) {
 
-//        int [] res = {10,9,8,7,6,5,4,3,2,1};
-//        int res[] = {4,5,3,7,2};
+        List<Trainer> trainers = new ArrayList<>();
+        List<Trainer> trainers2 = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            trainers.add(new Trainer("Trainer" + i + 1, (20 - i)));
+        }
+        trainers.add(new Trainer(null, 12));
 
-//        System.out.println(Arrays.toString(quickSort(res)));
-//        System.out.println();
-        List<String> list = Arrays.asList("Nóra", "Nándor", "Amál", "Mária", "Márton");
-        System.out.println(index(list));
+        int sum1 = trainers.stream().reduce(0, (i,a) -> i + a.getId(), Integer::sum);
+
+
+
+
+        System.out.println(sum1);
+//        trainers.stream().forEach(trainers2::add);
+
+//        System.out.println(trainers);
+//        trainers.sort(Comparator.comparing(Trainer::getName, Comparator.nullsFirst(Comparator.naturalOrder())));
+//        trainers.sort(Comparator.comparing(Trainer::getName, Comparator.nullsFirst(Comparator.naturalOrder())));
+//        System.out.println(trainers);
+
+
+
+
+
     }
 }

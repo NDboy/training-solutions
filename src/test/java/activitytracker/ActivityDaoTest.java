@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,4 +62,13 @@ class ActivityDaoTest {
         assertEquals("3 2020-12-12T12:12 Playing basketball in the forest BASKETBALL", activityDao.findActivityById(3).toString());
     }
 
+    @Test
+    void testSaveAndListAndWithId() {
+        List<Long> idList = new ArrayList<>();
+        for (Activity activity: activityList) {
+            Activity activityWithId = activityDao.saveActivityAndReturnWithGeneratedId(activity);
+            idList.add(activityWithId.getId());
+        }
+        assertEquals(Arrays.asList(1L,2L,3L,4L), idList);
+    }
 }
