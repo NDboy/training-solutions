@@ -50,7 +50,7 @@ class ActivityDaoTest {
         activity1 = new Activity(LocalDateTime.of(2020, 10, 10, 10,10), "Running in the forest", ActivityType.RUNNING, trackPointList);
         activity2 = new Activity(LocalDateTime.of(2020, 11, 11, 11,11), "Biking in the forest", ActivityType.BIKING, trackPointList);
 
-        Flyway flyway = Flyway.configure().dataSource(dataSource).load();
+        Flyway flyway = Flyway.configure().locations("/db/migration/activitytracker").dataSource(dataSource).load();
         flyway.clean();
         flyway.migrate();
 
