@@ -295,17 +295,38 @@ public class VaccinationDao {
     }
 
 
+//    private void updateCitizenWithVaccination(long ssn, String dateTimeString, int numberOfVaccination) {
+//        Citizen citizen = selectCitizenBySsn(ssn);
+//        int citizenId = 0;
+//        if (citizen != null) citizenId = citizen.getId();
+//
+//        try (PreparedStatement stmt = dataSource.getConnection().prepareStatement(
+//                "UPDATE citizens SET number_of_vaccination = ?, last_vaccination = ? WHERE citizen_id = ?")){
+//            stmt.setInt(1,  numberOfVaccination + 1);
+//            stmt.setTimestamp(2, Timestamp.valueOf(parseDateTime(dateTimeString)));
+//            stmt.setInt(3, citizenId);
+//            stmt.executeUpdate();
+//        }
+//        catch (SQLException se) {
+//            throw new IllegalStateException("Can not insert citizen", se);
+//        }
+//    }
+
     private void updateCitizenWithVaccination(long ssn, String dateTimeString, int numberOfVaccination) {
         Citizen citizen = selectCitizenBySsn(ssn);
         int citizenId = 0;
         if (citizen != null) citizenId = citizen.getId();
 
         try (PreparedStatement stmt = dataSource.getConnection().prepareStatement(
-                "UPDATE citizens SET number_of_vaccination = ?, last_vaccination = ? WHERE citizen_id = ?")){
-            stmt.setInt(1,  numberOfVaccination + 1);
-            stmt.setTimestamp(2, Timestamp.valueOf(parseDateTime(dateTimeString)));
-            stmt.setInt(3, citizenId);
-            stmt.executeUpdate();
+                "SELECT citizen_id, number_of_vaccination, last_vaccination from citizens WHERE citizen_id = ?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)){
+            stmt.setInt(1, citizenId);
+            try ( ResultSet rs = stmt.executeQuery()){
+                if (rs.next()) {
+                    rs.updateInt(2, numberOfVaccination + 1);
+                    rs.updateTimestamp(3, Timestamp.valueOf(parseDateTime(dateTimeString)));
+                    rs.updateRow();
+                }
+            }
         }
         catch (SQLException se) {
             throw new IllegalStateException("Can not insert citizen", se);

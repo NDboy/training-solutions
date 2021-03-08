@@ -7,30 +7,11 @@ public class ChangeLetter {
 
     private  static final char[] VOWELS_CHAR = {'a', 'e', 'i', 'o', 'u'};
 
-    private String changeVowels2(String str) {
+    public String changeVowels(String word) {
         for (char c : VOWELS_CHAR) {
-            str = str.replace(c, '*');
+            word = word.replace(c, '*');
 
         }
-        return str;
+        return word;
     }
-
-//    public static final String VOWELS = "aeiou";
-//
-//    private String changeVowels(String str) {
-//        str = str.toLowerCase();
-//        StringBuilder sb = new StringBuilder(str.length());
-//        for (int i = 0; i < str.length(); i++) {
-//            String s = str.substring(i, i + 1);
-//            if (VOWELS.contains(s)) {
-//                sb.append("*");
-//            } else {
-//                sb.append(s);
-//            }
-//        }
-//        return sb.toString();
-//    }
-public static void main(String[] args) {
-    System.out.println(new ChangeLetter().changeVowels2("arvizturotukorfurogep"));
-}
 }

@@ -1081,61 +1081,51 @@ public class Practise {
 //        return counter;
 //    }
 
-    public static Map<Character, List<String>> index(List<String> names) {
-        Map<Character, List<String>> result = new HashMap<>();
-        for (String name: names){
-            if (!result.containsKey(name.charAt(0))) {
-                List<String> listWithLetter = new ArrayList<>();
-                listWithLetter.add(name);
-                result.put(name.charAt(0), listWithLetter);
-            } else {
-                result.get(name.charAt(0)).add(name);
+//    public static Map<Character, List<String>> index(List<String> names) {
+//        Map<Character, List<String>> result = new HashMap<>();
+//        for (String name: names){
+//            if (!result.containsKey(name.charAt(0))) {
+//                List<String> listWithLetter = new ArrayList<>();
+//                listWithLetter.add(name);
+//                result.put(name.charAt(0), listWithLetter);
+//            } else {
+//                result.get(name.charAt(0)).add(name);
+//            }
+//        }
+//        return result;
+//    }
+
+
+
+    static String appendAndDelete(String s, String t, int k) {
+        int counter = 0;
+        StringBuilder sb = new StringBuilder(s);
+        if (s.startsWith(t) || t.startsWith(s)){
+            counter = Math.abs(s.length() - t.length());
+        } else {
+            while (!sb.toString().equals(t) && !t.startsWith(sb.toString()) && sb.length() > 0) {
+                if (sb.length() == 1) {
+                    sb.deleteCharAt(0);
+                    counter++;
+                } else {
+                    sb.deleteCharAt(sb.length() - 1);
+                    counter++;
+                }
             }
+            counter += t.length() - sb.length();
         }
-        return result;
+        if (counter <= k) {
+            return "Yes";
+        }
+        return "No";
     }
-
-    public static class Trainer{
-        private String name;
-        private int id;
-
-        public Trainer(String name, int id) {
-            this.name = name;
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        @Override
-        public String toString() {
-            return name + " " + id + "\n";
-        }
-    }
-
 
 
     public static void main(String[] args) {
 
-        List<Trainer> trainers = new ArrayList<>();
-        List<Trainer> trainers2 = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            trainers.add(new Trainer("Trainer" + i + 1, (20 - i)));
-        }
-        trainers.add(new Trainer(null, 12));
-
-        int sum1 = trainers.stream().reduce(0, (i,a) -> i + a.getId(), Integer::sum);
+        System.out.println(appendAndDelete("y", "yu", 2));
 
 
-
-
-        System.out.println(sum1);
-//        trainers.stream().forEach(trainers2::add);
 
 //        System.out.println(trainers);
 //        trainers.sort(Comparator.comparing(Trainer::getName, Comparator.nullsFirst(Comparator.naturalOrder())));

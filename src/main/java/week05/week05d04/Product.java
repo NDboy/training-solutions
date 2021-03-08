@@ -26,4 +26,8 @@ public class Product {
         return str == null || str.isBlank();
     }
 
+    @Override
+    public String toString() {
+        return name + ", exp.: " + expiringDate;
+    }
 }

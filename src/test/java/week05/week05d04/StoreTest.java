@@ -16,9 +16,7 @@ public class StoreTest {
         store.addProduct(new Product("banán", 2020, 11, 21));
 
         assertEquals(0, store.getNumberOfExpired());
-        assertEquals(3, store.getProducts().size());
-
+        assertEquals(1, store.getProducts().size());
     }
-
 
 }

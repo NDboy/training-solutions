@@ -1,4 +1,4 @@
-package week03.week03d05;
+package week03.week03d02;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ public class Position {
         this.name = name;
         this.bonus = bonus;
     }
-
 
     public String getName() {
         return name;
@@ -29,34 +28,21 @@ public class Position {
         this.bonus = bonus;
     }
 
-
-
     @Override
     public String toString() {
-        return "Position{" +
-                "name='" + name + '\'' +
-                ", bonus=" + bonus +
-                '}';
+        return name + " " +  bonus;
     }
 
     public static void main(String[] args) {
+        List<Position> positions = new ArrayList<>();
 
-        List<Position> employees = new ArrayList<>();
-        employees.add(new Position("Jack", 200000));
-        employees.add(new Position("Joe", 300000));
-        employees.add(new Position("John", 400000));
+        positions.add(new Position("employee1", 100_000));
+        positions.add(new Position("employee2", 150_000));
+        positions.add(new Position("employee3", 200_000));
+        positions.add(new Position("employee4", 250_000));
 
-        for (Position a: employees) {
-            if (a.getBonus() > 350000) {
-                System.out.println(a);
-            }
-
+        for (Position position: positions) {
+            if (position.getBonus() > 150_000) System.out.println(position);
         }
-
     }
-
-
-
-
-
 }

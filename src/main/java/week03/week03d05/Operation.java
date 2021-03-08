@@ -1,4 +1,4 @@
-package week03.week03d02;
+package week03.week03d05;
 
 import java.util.Scanner;
 
@@ -12,13 +12,17 @@ public class Operation {
         rightValue = Integer.parseInt(numbers[1]);
     }
 
+    public int getResult() {
+        return leftValue + rightValue;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Összeadás?");
         String addition = scanner.nextLine();
         Operation operation = new Operation(addition);
 
-        System.out.println(operation.leftValue + operation.rightValue);
+        System.out.println(operation.getResult());
     }
 
 }
