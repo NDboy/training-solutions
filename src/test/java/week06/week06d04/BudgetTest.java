@@ -28,6 +28,7 @@ public class BudgetTest {
     @Test
     public void testGetItemsByMonth() {
         assertEquals("[2000 2 körte, 7000 2 citrom]", new Budget(its).getItemsByMonth(2).toString());
+        assertEquals("[1000 1 alma, 6000 1 meggy]", new Budget(its).getItemsByMonthWithStream(1).toString());
         assertEquals("[]", new Budget(its).getItemsByMonth(6).toString());
     }
 

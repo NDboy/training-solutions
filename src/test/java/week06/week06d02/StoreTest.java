@@ -25,5 +25,10 @@ public class StoreTest {
         assertEquals(0, new Store(Arrays.asList(new Product("alma", Category.DAIRY, 125), new Product("májkrém", Category.OTHER, 305))).getProductByCategoryName(Category.FROZEN));
     }
 
+    @Test
+    public void testGetProductByCategoryNameWithStream() {
+        assertEquals(0, new Store(Arrays.asList(new Product("alma", Category.DAIRY, 125), new Product("májkrém", Category.OTHER, 305))).getProductByCategoryNameWithStream(Category.FROZEN));
+        assertEquals(1, new Store(Arrays.asList(new Product("alma", Category.DAIRY, 125), new Product("májkrém", Category.OTHER, 305))).getProductByCategoryNameWithStream(Category.DAIRY));
+    }
 
 }

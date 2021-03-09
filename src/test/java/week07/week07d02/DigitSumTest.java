@@ -12,6 +12,7 @@ public class DigitSumTest {
         assertEquals(12, new DigitSum().sumOfDigitsString(66));
         assertEquals(12, new DigitSum().sumOfDigitsByRoundingLoss(66));
         assertEquals(0, new DigitSum().sumOfDigitsByRoundingLoss(0));
+        assertEquals(15, DigitSum.sumOfDigitsWithStream(12345));
     }
 
     @Test

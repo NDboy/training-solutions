@@ -2,6 +2,7 @@ package week06.week06d04;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Budget{
     private List<Item> items;
@@ -29,6 +30,12 @@ public class Budget{
             }
         }
         return foundItems;
+    }
+
+    public List<Item> getItemsByMonthWithStream(int month) {
+        return items.stream()
+                .filter(a -> a.getMonth() == month)
+                .collect(Collectors.toList());
     }
 
 }

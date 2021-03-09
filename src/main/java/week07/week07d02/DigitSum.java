@@ -1,6 +1,9 @@
 package week07.week07d02;
 
+import java.util.stream.IntStream;
+
 public class DigitSum {
+
     public int sumOfDigitsString(int x){
         if (x < 0) {
             throw new IllegalArgumentException("Wrong argument!");
@@ -12,6 +15,15 @@ public class DigitSum {
         }
         return sum;
     }
+
+    public static int sumOfDigitsWithStream(int x){
+        String numberString = Integer.toString(x);
+        return IntStream
+                .range(0, numberString.length())
+                .mapToObj(a -> Integer.parseInt(Character.toString(numberString.charAt(a))))
+                .reduce(0, Integer::sum);
+    }
+
 
     public int sumOfDigitsByRoundingLoss(int x) {
         if (x < 0) {
@@ -30,4 +42,5 @@ public class DigitSum {
             return sum;
         }
     }
+
 }

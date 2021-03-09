@@ -1,6 +1,8 @@
 package week06.week06d03;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class WordEraser {
     public String eraseWord(String words, String word) {
@@ -14,6 +16,14 @@ public class WordEraser {
         }
         return sb.toString().trim();
     }
+
+    public String eraseWordWithStream(String words, String word) {
+        return Arrays.stream(words.split(" "))
+                .filter(a -> !a.equals(word))
+                .map(String::trim)
+                .collect(Collectors.joining(" "));
+    }
+
 }
 
 

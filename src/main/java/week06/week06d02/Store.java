@@ -23,6 +23,9 @@ public class Store {
         return counter;
     }
 
-
-
+    public int getProductByCategoryNameWithStream(Category category) {
+        return (int)products.stream()
+                .filter(a -> a.getCategory() == category)
+                .count();
+    }
 }
