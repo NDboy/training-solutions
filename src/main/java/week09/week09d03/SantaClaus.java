@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SantaClaus {
 
-    private List<Person> personList = new ArrayList<>();
+    private List<Person> personList;
 
     public SantaClaus(List<Person> personList) {
         this.personList = personList;

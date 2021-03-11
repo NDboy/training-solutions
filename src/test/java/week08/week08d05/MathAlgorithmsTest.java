@@ -10,6 +10,7 @@ class MathAlgorithmsTest {
     @Test
     public void testGreatestCommonDivisor() {
         assertEquals(13, MathAlgorithms.greatestCommonDivisor(26,39));
+        assertEquals(13, MathAlgorithms.greatestCommonDivisorWithStream(26,39));
     }
 
     @Test
