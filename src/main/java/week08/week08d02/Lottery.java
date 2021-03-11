@@ -3,6 +3,7 @@ package week08.week08d02;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Lottery {
 
@@ -19,9 +20,18 @@ public class Lottery {
         return result;
     }
 
+    public static List<Integer> getNumbersWithStream(int interval, int numbers, int seed) {
+        return new Random()
+                .ints(1, interval + 1)
+                .distinct()
+                .limit(numbers)
+                .sorted()
+                .boxed()
+                .collect(Collectors.toList());
+
+    }
+
 }
-
-
 
 
 
